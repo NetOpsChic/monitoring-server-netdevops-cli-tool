@@ -1,0 +1,11 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: "gns3-napalm"
+    metrics_path: /metrics
+    static_configs:
+      - targets:
+          - "{{ observer_ip }}:5000"
+

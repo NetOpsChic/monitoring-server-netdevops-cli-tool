@@ -1,0 +1,7 @@
+targets:
+{% for host in targets %}
+  - hostname: {{ host.hostname }}
+    driver: {{ host.driver }}
+    username: {{ host.username }}
+    password: {{ host.password }}
+{% endfor %}

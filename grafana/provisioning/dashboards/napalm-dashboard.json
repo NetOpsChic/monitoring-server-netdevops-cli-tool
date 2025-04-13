@@ -1,0 +1,122 @@
+{
+  "title": "NetDevOps Router Health Dashboard",
+  "panels": [
+    {
+      "type": "stat",
+      "title": "Interface Status (Up)",
+      "targets": [
+        {
+          "expr": "router_interface_status",
+          "legendFormat": "{{device}} - {{interface}}",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "color": {
+            "mode": "thresholds"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "red", "value": 0 },
+              { "color": "green", "value": 1 }
+            ]
+          }
+        }
+      },
+      "gridPos": { "x": 0, "y": 0, "w": 12, "h": 8 }
+    },
+    {
+      "type": "stat",
+      "title": "Interface Speed (Mbps)",
+      "targets": [
+        {
+          "expr": "router_interface_speed",
+          "legendFormat": "{{device}} - {{interface}}",
+          "refId": "B"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "Mbps",
+          "color": { "mode": "palette-classic" }
+        }
+      },
+      "gridPos": { "x": 12, "y": 0, "w": 12, "h": 8 }
+    },
+    {
+      "type": "table",
+      "title": "Device Information",
+      "targets": [
+        {
+          "expr": "router_info",
+          "refId": "C"
+        }
+      ],
+      "gridPos": { "x": 0, "y": 8, "w": 24, "h": 6 }
+    },
+    {
+      "type": "stat",
+      "title": "Router Uptime (sec)",
+      "targets": [
+        {
+          "expr": "router_uptime",
+          "legendFormat": "{{device}}",
+          "refId": "D"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s",
+          "color": { "mode": "continuous-GrYlRd" }
+        }
+      },
+      "gridPos": { "x": 0, "y": 14, "w": 12, "h": 6 }
+    },
+    {
+      "type": "stat",
+      "title": "BGP Neighbors",
+      "targets": [
+        {
+          "expr": "router_bgp_neighbors_total",
+          "legendFormat": "{{device}}",
+          "refId": "E"
+        }
+      ],
+      "gridPos": { "x": 12, "y": 14, "w": 6, "h": 6 }
+    },
+    {
+      "type": "stat",
+      "title": "OSPF Neighbors",
+      "targets": [
+        {
+          "expr": "router_ospf_neighbors_total",
+          "legendFormat": "{{device}}",
+          "refId": "F"
+        }
+      ],
+      "gridPos": { "x": 18, "y": 14, "w": 6, "h": 6 }
+    },
+    {
+      "type": "stat",
+      "title": "Routing Table Size",
+      "targets": [
+        {
+          "expr": "router_routes_total",
+          "legendFormat": "{{device}}",
+          "refId": "G"
+        }
+      ],
+      "gridPos": { "x": 0, "y": 20, "w": 12, "h": 6 }
+    }
+  ],
+  "schemaVersion": 37,
+  "version": 1,
+  "refresh": "10s",
+  "time": {
+    "from": "now-5m",
+    "to": "now"
+  }
+}
